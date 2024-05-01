@@ -3,6 +3,7 @@ package com.example.weather;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -16,28 +17,24 @@ public class WeatherAPI {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    public String getWeatherData(String city) {
+    public String getWeatherData(String city) throws Exception {
         String apiUrl = "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=" + city;
 
-        try {
-            URL url = new URL(apiUrl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
+        URL url = new URL(apiUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String inputLine;
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        StringBuilder response = new StringBuilder();
+        String inputLine;
 
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-            
-            Object jsonObject = gson.fromJson(response.toString(), Object.class);
-            return gson.toJson(jsonObject);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
+        in.close();
+
+        Object jsonObject = gson.fromJson(response.toString(), Object.class);
+        return gson.toJson(jsonObject);
+
     }
 }
