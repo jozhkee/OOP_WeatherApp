@@ -32,8 +32,7 @@ public class WeatherAPI {
                 response.append(inputLine);
             }
             in.close();
-
-            // Parse JSON string and pretty-print
+            
             Object jsonObject = gson.fromJson(response.toString(), Object.class);
             return gson.toJson(jsonObject);
         } catch (Exception e) {
