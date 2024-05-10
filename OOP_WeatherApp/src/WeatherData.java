@@ -5,7 +5,7 @@ public class WeatherData {
 
     // TODO: make this more appealing
     public String getBasicInfo() {
-        return location.toString() + ", temperature=" + current.getTemp_c() + ", condition="
+        return location.toString() + ", temperature=" + current.getTemp_c() + "°C" + ", condition="
                 + current.getCondition().getText();
     }
 

@@ -25,11 +25,9 @@ public class InputHandler {
 
     public int getOption() throws CustomException {
         // TODO: Somehow we need to make this look better
-        System.out.print(
-                "Please enter a number corresponding to information you want to retrieve:\n" +
-                        "0. Exit 1. Show advanced information 2. Show wind speed 3. Show pressure " +
-                        "4. Show Humidity\n5. Show precipitation 6. Show Cloud cover percentage " +
-                        "7. Show \"Feels like\" Temperature 8. Show visibility\n9. Show UV index 10. Show wind gust 11. Show wind direction 12. Next city\n");
+        System.out.println();
+        System.out.println("Please enter a number corresponding to information you want to retrieve:");
+        printOptionTable();
 
         int option = -1;
         while (option == -1) {
@@ -42,6 +40,32 @@ public class InputHandler {
         }
         scanner.nextLine();
         return option;
+
+    }
+
+    public void printOptionTable()
+    {
+        String[] firstColumn = { "| 0. Exit", "| 1. Show advanced information", "| 2. Show wind speed",
+                "| 3. Show pressure", "| 4. Show Humidity", "| 5. Show precipitation", "| 6. Show Cloud cover percentage"};
+        String[] secondColumn = { "7. Show \"Feels like\" Temperature", "8. Show visibility", "9. Show UV index",
+                "10. Show wind gust", "11. Show wind direction", "12. Next city", ""};
+        String[] thirdColumn = {"|", "|", "|", "|", "|", "|", "|"};
+
+        int firstColumnWidth = 40;
+        int secondColumnWidth = 34;
+        int thirdColumnWidth = 20;
+
+        System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth+1)));
+
+        for (int i = 0; i < firstColumn.length; i++) {
+
+            String formattedFirst = String.format("%-" + firstColumnWidth + "s", firstColumn[i]);
+            String formattedSecond= String.format("%-" + secondColumnWidth + "s", secondColumn[i]);
+            String formattedThird= String.format("%-" + thirdColumnWidth + "s", thirdColumn[i]);
+            System.out.println(formattedFirst + formattedSecond + formattedThird);
+        }
+
+        System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth+1)));
 
     }
 
