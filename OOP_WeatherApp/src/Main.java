@@ -89,8 +89,7 @@ public class Main {
                         case 12:
                             if (System.getProperty("os.name").startsWith("Windows")) {
                                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }
-                            else {
+                            } else {
                                 Runtime.getRuntime().exec("clear");
                             }
                             break;

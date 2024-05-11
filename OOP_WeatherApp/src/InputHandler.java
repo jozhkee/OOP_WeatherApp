@@ -39,29 +39,29 @@ public class InputHandler {
 
     }
 
-    public void printOptionTable()
-    {
+    public void printOptionTable() {
         String[] firstColumn = { "| 0. Exit", "| 1. Show advanced information", "| 2. Show wind speed",
-                "| 3. Show pressure", "| 4. Show Humidity", "| 5. Show precipitation", "| 6. Show Cloud cover percentage"};
+                "| 3. Show pressure", "| 4. Show Humidity", "| 5. Show precipitation",
+                "| 6. Show Cloud cover percentage" };
         String[] secondColumn = { "7. Show \"Feels like\" Temperature", "8. Show visibility", "9. Show UV index",
-                "10. Show wind gust", "11. Show wind direction", "12. Next city", ""};
-        String[] thirdColumn = {"|", "|", "|", "|", "|", "|", "|"};
+                "10. Show wind gust", "11. Show wind direction", "12. Next city", "" };
+        String[] thirdColumn = { "|", "|", "|", "|", "|", "|", "|" };
 
         int firstColumnWidth = 40;
         int secondColumnWidth = 34;
         int thirdColumnWidth = 20;
 
-        System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth+1)));
+        System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth + 1)));
 
         for (int i = 0; i < firstColumn.length; i++) {
 
             String formattedFirst = String.format("%-" + firstColumnWidth + "s", firstColumn[i]);
-            String formattedSecond= String.format("%-" + secondColumnWidth + "s", secondColumn[i]);
-            String formattedThird= String.format("%-" + thirdColumnWidth + "s", thirdColumn[i]);
+            String formattedSecond = String.format("%-" + secondColumnWidth + "s", secondColumn[i]);
+            String formattedThird = String.format("%-" + thirdColumnWidth + "s", thirdColumn[i]);
             System.out.println(formattedFirst + formattedSecond + formattedThird);
         }
 
-        System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth+1)));
+        System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth + 1)));
 
     }
 
