@@ -3,17 +3,57 @@ public class WeatherData {
     private Location location;
     private Current current;
 
-    // TODO: make this more appealing
     public String getBasicInfo() {
-        return location.toString() + ", temperature=" + current.getTemp_c() + "°C" + ", condition="
-                + current.getCondition().getText();
+        StringBuilder table = new StringBuilder();
+
+        String[] labels = {"Name", "Region", "Country", "Latitude", "Longitude", "Timezone", "Local Time", "Temperature",
+                "Condition"};
+        String[] values = {location.getName(), location.getRegion(), location.getCountry(),
+                String.valueOf(location.getLat()), String.valueOf(location.getLon()), location.getTz_id(),
+                location.getLocaltime(), current.getTemp_c() + "°C", current.getCondition().getText()};
+
+        int labelColumnWidth = 20;
+        int valueColumnWidth = 30;
+
+        table.append("-".repeat(labelColumnWidth + 3) + "-" + "-".repeat(valueColumnWidth + 1)).append("\n");
+
+        for (int i = 0; i < labels.length; i++) {
+            String formattedLabel = String.format("%-" + labelColumnWidth + "s", labels[i]);
+            String formattedValue = String.format("%-" + valueColumnWidth + "s", values[i]);
+            table.append("| ").append(formattedLabel).append("| ").append(formattedValue).append("|\n");
+        }
+
+        table.append("-".repeat(labelColumnWidth + 3) + "-" + "-".repeat(valueColumnWidth + 1));
+
+        return table.toString();
     }
 
-    // TODO: make this more appealing
-    public String getAdvancedInfo() { // everything starting from Wind speed to Wind Direction ( 10 things all in all
-                                      // )
+    public String getAdvancedInfo() {
 
-        return "";
+        StringBuilder table = new StringBuilder();
+
+        String[] labels = {"Wind speed", "Pressure", "Humidity", "Precipitation", "Cloud cover", "Feels like",
+                "Visibility", "UV", "Wind gust", "Wind direction"};
+        String[] values = {current.getWind_kph() + " kph", current.getPressure_mb() + " hPa",
+                current.getHumidity() + " %", current.getPrecip_mm() + " mm",
+                current.getCloud() + " %", current.getFeelslike_c() + "°C",
+                current.getVis_km() + " km", String.valueOf(current.getUv()), current.getGust_kph() + " kph",
+                current.getWind_dir()};
+
+        int labelColumnWidth = 20;
+        int valueColumnWidth = 30;
+
+        table.append("-".repeat(labelColumnWidth + 3) + "-" + "-".repeat(valueColumnWidth + 1)).append("\n");
+
+        for (int i = 0; i < labels.length; i++) {
+            String formattedLabel = String.format("%-" + labelColumnWidth + "s", labels[i]);
+            String formattedValue = String.format("%-" + valueColumnWidth + "s", values[i]);
+            table.append("| ").append(formattedLabel).append("| ").append(formattedValue).append("|\n");
+        }
+
+        table.append("-".repeat(labelColumnWidth + 3) + "-" + "-".repeat(valueColumnWidth + 1));
+
+        return table.toString();
     }
 
     public double getWindSpeed() {
@@ -41,29 +81,29 @@ public class WeatherData {
         return current.getCloud();
     }
 
-    public double getFeelsLike() {// finish method
+    public double getFeelsLike() {
 
-        return 0.0;
+        return current.getFeelslike_c();
     }
 
-    public double getVisibility() {// finish method
+    public double getVisibility() {
 
-        return 0.0;
+        return current.getVis_km();
     }
 
-    public double getUVIndex() {// finish method
+    public double getUVIndex() {
 
-        return 0.0;
+        return current.getUv();
     }
 
-    public double getGust() {// finish method
+    public double getGust() {
 
-        return 0.0;
+        return current.getGust_kph();
     }
 
-    public String getWindDirection() {// finish method
+    public String getWindDirection() {
 
-        return "";
+        return current.getWind_dir();
     }
 
 }
