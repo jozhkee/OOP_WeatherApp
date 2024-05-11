@@ -16,7 +16,9 @@ public class Main {
                 String city = inputHandler.getCity();
                 String jsonData = weatherAPI.getWeatherData(city);
                 WeatherData weatherData = gson.fromJson(jsonData, WeatherData.class);
-
+                if (!(weatherData.getLocation().getCountry().equals("Lithuania"))) {
+                    throw new CustomException("Invalid Country");
+                }
                 System.out.println("Basic information:\n" + weatherData.getBasicInfo());
                 int option = -1;
                 System.out.println();

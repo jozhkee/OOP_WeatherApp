@@ -8,7 +8,7 @@ public class ExceptionHandler {
             System.out.println(e.getMessage());
         } else if (e.getMessage() == "Invalid city name!") {
             System.out.println(e.getMessage());
-        } else if (e instanceof IOException) {
+        } else if (e instanceof IOException || e.getMessage() == "Invalid Country") {
             System.out.println("Provided city name could not be found!");
         } else if (e.getMessage() == "EXIT") {
             System.out.println("Hope to see you soon!");

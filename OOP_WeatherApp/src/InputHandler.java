@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputHandler {
@@ -27,16 +28,20 @@ public class InputHandler {
 
         int option = -1;
         while (option == -1) {
-            option = scanner.nextInt();
-            if (option > 12 || option < 0) {
-                option = -1;
+            try {
+                option = scanner.nextInt();
+                if (option > 12 || option < 0) {
+                    option = -1;
+                    System.out.println("Please enter a valid number.");
+                }
+            } catch (InputMismatchException e) {
+                scanner.next();
                 System.out.println("Please enter a valid number.");
+                option = -1;
             }
-
         }
         scanner.nextLine();
         return option;
-
     }
 
     public void printOptionTable() {

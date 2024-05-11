@@ -6,11 +6,12 @@ public class WeatherData {
     public String getBasicInfo() {
         StringBuilder table = new StringBuilder();
 
-        String[] labels = {"Name", "Region", "Country", "Latitude", "Longitude", "Timezone", "Local Time", "Temperature",
-                "Condition"};
-        String[] values = {location.getName(), location.getRegion(), location.getCountry(),
+        String[] labels = { "Name", "Region", "Country", "Latitude", "Longitude", "Timezone", "Local Time",
+                "Temperature",
+                "Condition" };
+        String[] values = { location.getName(), location.getRegion(), location.getCountry(),
                 String.valueOf(location.getLat()), String.valueOf(location.getLon()), location.getTz_id(),
-                location.getLocaltime(), current.getTemp_c() + "°C", current.getCondition().getText()};
+                location.getLocaltime(), current.getTemp_c() + "°C", current.getCondition().getText() };
 
         int labelColumnWidth = 20;
         int valueColumnWidth = 30;
@@ -32,13 +33,13 @@ public class WeatherData {
 
         StringBuilder table = new StringBuilder();
 
-        String[] labels = {"Wind speed", "Pressure", "Humidity", "Precipitation", "Cloud cover", "Feels like",
-                "Visibility", "UV", "Wind gust", "Wind direction"};
-        String[] values = {current.getWind_kph() + " kph", current.getPressure_mb() + " hPa",
+        String[] labels = { "Wind speed", "Pressure", "Humidity", "Precipitation", "Cloud cover", "Feels like",
+                "Visibility", "UV", "Wind gust", "Wind direction" };
+        String[] values = { current.getWind_kph() + " kph", current.getPressure_mb() + " hPa",
                 current.getHumidity() + " %", current.getPrecip_mm() + " mm",
                 current.getCloud() + " %", current.getFeelslike_c() + "°C",
                 current.getVis_km() + " km", String.valueOf(current.getUv()), current.getGust_kph() + " kph",
-                current.getWind_dir()};
+                current.getWind_dir() };
 
         int labelColumnWidth = 20;
         int valueColumnWidth = 30;
@@ -104,6 +105,14 @@ public class WeatherData {
     public String getWindDirection() {
 
         return current.getWind_dir();
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public Current getCurrent() {
+        return current;
     }
 
 }
