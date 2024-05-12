@@ -1,3 +1,5 @@
+//TODO STAGE 3: GUI
+
 import com.example.weather.WeatherAPI;
 
 import com.google.gson.Gson;
