@@ -1,7 +1,18 @@
+/**
+ * The WeatherData class represents weather data retrieved from the API,
+ * including location and current weather conditions.
+ */
 
 public class WeatherData {
     private Location location;
     private Current current;
+
+    /**
+     * Returns a string containing basic information about the weather data.
+     *
+     * @return A string containing basic weather information such as location,
+     *         temperature, and condition.
+     */
 
     public String getBasicInfo() {
         StringBuilder table = new StringBuilder();
@@ -28,6 +39,13 @@ public class WeatherData {
 
         return table.toString();
     }
+
+    /**
+     * Returns a string containing advanced information about the weather data.
+     *
+     * @return A string containing advanced weather information such as wind speed,
+     *         pressure, and humidity.
+     */
 
     public String getAdvancedInfo() {
 
@@ -319,7 +337,6 @@ class Current {
         this.gust_kph = gust_kph;
     }
 
-    // TODO: make this more appealing
     @Override
     public String toString() {
         return "last_updated=" + last_updated + ", temp_c="

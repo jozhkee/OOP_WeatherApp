@@ -1,12 +1,25 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The InputHandler class provides methods for handling user input from the
+ * console.
+ */
+
 public class InputHandler {
     private Scanner scanner;
 
     public InputHandler() {
         this.scanner = new Scanner(System.in);
     }
+
+    /**
+     * Prompts the user to enter a city name and returns it.
+     *
+     * @return The city name entered by the user.
+     * @throws CustomException If the user enters an empty string or a city name
+     *                         containing digits or writes exit
+     */
 
     public String getCity() throws CustomException {
         System.out.print("Enter the city name: ");
@@ -23,6 +36,14 @@ public class InputHandler {
         }
         return city;
     }
+
+    /**
+     * Prompts the user to enter an option and returns it.
+     *
+     * @return The option entered by the user.
+     * @throws CustomException If the user enters a non-integer value or an invalid
+     *                         option number.
+     */
 
     public int getOption() throws CustomException {
 
@@ -43,6 +64,10 @@ public class InputHandler {
         scanner.nextLine();
         return option;
     }
+
+    /**
+     * Prints a table of options for the user to choose from.
+     */
 
     public void printOptionTable() {
         String[] firstColumn = { "| 0. Exit", "| 1. Show advanced information", "| 2. Show wind speed",
@@ -69,6 +94,13 @@ public class InputHandler {
         System.out.println("-".repeat(firstColumnWidth + (secondColumnWidth + 1)));
 
     }
+
+    /**
+     * Checks if the user input is "exit" (case-insensitive).
+     *
+     * @param input The input to be checked.
+     * @return true if the input is "exit", false otherwise.
+     */
 
     public boolean checkForExit(String input) {
         if (input.trim().equalsIgnoreCase("exit")) {

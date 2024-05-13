@@ -6,26 +6,45 @@ import com.google.gson.Gson;
 
 public class Main {
     public static void main(String[] args) {
+        // Initialize Gson for JSON parsing
         Gson gson = new Gson();
+
+        // API key for accessing weather data
         String apiKey = "6387ff5ad2df4600bd584558240105";
+
+        // Create an instance of the WeatherAPI class with the API key
         WeatherAPI weatherAPI = new WeatherAPI(apiKey);
+
+        // Create an instance of InputHandler to handle user input
         InputHandler inputHandler = new InputHandler();
+
+        // Flag to indicate whether to exit the application
         boolean isExit = false;
+
+        // Welcome message
         System.out.println("Welcome to Balkonas!");
         System.out.println("To exit from the app at any time just enter exit!");
+
         while (!isExit) {
             try {
+
                 String city = inputHandler.getCity();
                 String jsonData = weatherAPI.getWeatherData(city);
+                // Deserialize JSON data into WeatherData object
                 WeatherData weatherData = gson.fromJson(jsonData, WeatherData.class);
+
+                // Check if the country is Lithuania, throw an exception otherwise
                 if (!(weatherData.getLocation().getCountry().equals("Lithuania"))) {
                     throw new CustomException("Invalid Country");
                 }
+
                 System.out.println("Basic information:\n" + weatherData.getBasicInfo());
                 int option = -1;
                 System.out.println();
                 System.out.println("Please enter a number corresponding to information you want to retrieve:");
                 inputHandler.printOptionTable();
+                // Loop to handle user options until the user chooses to exit or switch to next
+                // city
                 while (option != 12) {
                     option = inputHandler.getOption();
                     switch (option) {

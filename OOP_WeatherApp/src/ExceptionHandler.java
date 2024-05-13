@@ -1,7 +1,16 @@
 import java.io.IOException;
 
+/**
+ * The ExceptionHandler class provides a static method for handling various
+ * exceptions that may occur in the application.
+ */
 public class ExceptionHandler {
 
+    /**
+     * Handles the specified exception by printing appropriate error messages.
+     *
+     * @param e The exception to be handled.
+     */
     public static void handleException(Exception e) {
 
         if (e.getMessage() == "Empty Input is not allowed!") {
