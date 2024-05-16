@@ -76,16 +76,17 @@ public class Main {
                             System.out.println("---------------------------------------------------------");
                             break;
                         case 6:
-                            System.out.println("---------------------------------------------------------");
-                            System.out.printf("| %-20s | %-30s |\n", "Cloud cover percentage: ",
+                            System.out.println("------------------------------------------------------------");
+                            System.out.printf("| %-20s | %-30s |\n", "Cloud cover percentage:",
                                     weatherData.getCloudCover() + " %");
-                            System.out.println("---------------------------------------------------------");
+                            System.out.println("------------------------------------------------------------");
                             break;
+
                         case 7:
-                            System.out.println("---------------------------------------------------------");
+                            System.out.println("---------------------------------------------------------------");
                             System.out.printf("| %-20s | %-30s |\n", "\"Feels like\" temperature: ",
                                     weatherData.getFeelsLike() + " °C");
-                            System.out.println("---------------------------------------------------------");
+                            System.out.println("---------------------------------------------------------------");
                             break;
                         case 8:
                             System.out.println("---------------------------------------------------------");
