@@ -24,7 +24,7 @@ public class WeatherAppGUI extends JFrame {
 
         // Set up the GUI components
         setTitle("Balkonas Weather App");
-        setSize(600, 400);
+        setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -40,15 +40,43 @@ public class WeatherAppGUI extends JFrame {
         weatherInfoTextArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(weatherInfoTextArea);
 
+        weatherInfoTextArea.setPreferredSize(new Dimension(500, 200));
+
+        Font monospacedFont = new Font("Lucida Console", Font.PLAIN, 14);
+        weatherInfoTextArea.setFont(monospacedFont);
+
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout());
         optionComboBox = new JComboBox<>();
         optionComboBox.addItem("Select Option"); // Default value
         bottomPanel.add(optionComboBox);
 
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        centerPanel.add(scrollPane, gbc);
+
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("balconyImg.png"));
+        Image scaledImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        JLabel imageLabel = new JLabel(scaledIcon);
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        centerPanel.add(imageLabel, gbc);
+
         add(topPanel, BorderLayout.NORTH);
-        add(scrollPane, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
+        add(centerPanel, BorderLayout.CENTER);
 
         getWeatherButton.addActionListener(e -> {
             String city = cityTextField.getText().trim();
@@ -86,53 +114,53 @@ public class WeatherAppGUI extends JFrame {
     private void populateOptionComboBox() {
         optionComboBox.removeAllItems();
         optionComboBox.addItem("Select Option");
-        optionComboBox.addItem("Show advanced information");
-        optionComboBox.addItem("Show wind speed");
-        optionComboBox.addItem("Show pressure");
-        optionComboBox.addItem("Show Humidity");
-        optionComboBox.addItem("Show precipitation");
-        optionComboBox.addItem("Show Cloud cover percentage");
-        optionComboBox.addItem("Show \"Feels like\" Temperature");
-        optionComboBox.addItem("Show visibility");
-        optionComboBox.addItem("Show UV index");
-        optionComboBox.addItem("Show wind gust");
-        optionComboBox.addItem("Show wind direction");
+        optionComboBox.addItem("Advanced information");
+        optionComboBox.addItem("Wind speed");
+        optionComboBox.addItem("Pressure");
+        optionComboBox.addItem("Humidity");
+        optionComboBox.addItem("Precipitation");
+        optionComboBox.addItem("Cloud cover percentage");
+        optionComboBox.addItem("\"Feels like\" temperature");
+        optionComboBox.addItem("Visibility");
+        optionComboBox.addItem("UV index");
+        optionComboBox.addItem("Wind gust");
+        optionComboBox.addItem("Wind direction");
     }
 
     private void displayDetailedWeather(String selectedOption) {
         String info = "";
         switch (selectedOption) {
-            case "Show advanced information":
+            case "Advanced information":
                 info = currentWeatherData.getAdvancedInfo();
                 break;
-            case "Show wind speed":
+            case "Wind speed":
                 info = "Wind speed: " + currentWeatherData.getWindSpeed() + " kph";
                 break;
-            case "Show pressure":
+            case "Pressure":
                 info = "Pressure: " + currentWeatherData.getPressure() + " hPa";
                 break;
-            case "Show Humidity":
+            case "Humidity":
                 info = "Humidity: " + currentWeatherData.getHumidity() + " %";
                 break;
-            case "Show precipitation":
+            case "Precipitation":
                 info = "Precipitation: " + currentWeatherData.getPrecipitation() + " mm";
                 break;
-            case "Show Cloud cover percentage":
+            case "Cloud cover percentage":
                 info = "Cloud cover percentage: " + currentWeatherData.getCloudCover() + " %";
                 break;
-            case "Show \"Feels like\" Temperature":
+            case "\"Feels like\" temperature":
                 info = "\"Feels like\" temperature: " + currentWeatherData.getFeelsLike() + " °C";
                 break;
-            case "Show visibility":
+            case "Visibility":
                 info = "Visibility: " + currentWeatherData.getVisibility() + " km";
                 break;
-            case "Show UV index":
+            case "UV index":
                 info = "UV index: " + currentWeatherData.getUVIndex();
                 break;
-            case "Show wind gust":
+            case "Wind gust":
                 info = "Wind gust: " + currentWeatherData.getGust() + " kph";
                 break;
-            case "Show wind direction":
+            case "Wind direction":
                 info = "Wind direction: " + currentWeatherData.getWindDirection();
                 break;
         }
