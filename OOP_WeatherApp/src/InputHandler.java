@@ -20,7 +20,7 @@ public class InputHandler {
      * @throws CustomException If the user enters an empty string or a city name
      *                         containing digits or writes exit
      */
-
+    // deprecated
     public String getCity() throws CustomException {
         System.out.print("Enter the city name: ");
         String city = scanner.nextLine();
@@ -44,7 +44,7 @@ public class InputHandler {
      * @throws CustomException If the user enters a non-integer value or an invalid
      *                         option number.
      */
-
+    // deprecated
     public int getOption() throws CustomException {
 
         int option = -1;
@@ -69,6 +69,7 @@ public class InputHandler {
      * Prints a table of options for the user to choose from.
      */
 
+    // deprecated
     public void printOptionTable() {
         String[] firstColumn = { "| 0. Exit", "| 1. Show advanced information", "| 2. Show wind speed",
                 "| 3. Show pressure", "| 4. Show Humidity", "| 5. Show precipitation",
@@ -102,6 +103,7 @@ public class InputHandler {
      * @return true if the input is "exit", false otherwise.
      */
 
+    // deprecated
     public boolean checkForExit(String input) {
         if (input.trim().equalsIgnoreCase("exit")) {
             return true;
