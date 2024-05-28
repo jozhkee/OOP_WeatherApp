@@ -1,6 +1,6 @@
 # Balkonas Weather App
 
-Balkonas Weather App is a Java application that allows users to retrieve weather information for various cities. The application utilizes the WeatherAPI to fetch real-time weather data based on user input.
+Balkonas Weather App is a Java application that allows users to retrieve weather information for various cities through a graphical user interface (GUI). The application utilizes the WeatherAPI to fetch real-time weather data based on user input.
 
 ## Features
 
@@ -11,14 +11,14 @@ Balkonas Weather App is a Java application that allows users to retrieve weather
 
 1. Clone the repository to your local machine.
 2. Open the project in your preferred Java IDE.
-3. Navigate to the `Main` class located in the `com.example.weather` package.
-4. Run the `Main` class to start the application.
-5. Follow the prompts to enter the city name and choose the desired weather information.
+3. Navigate to the `WeatherAppGUI` class.
+4. Run the `WeatherAppGUI` class to start the application.
+5. Follow the GUI prompts to enter the city name and choose the desired weather information.
 
 ## Classes
 
-### 1. Main
-The main class of the application responsible for user interaction and handling weather data retrieval.
+### 1. WeatherAppGUI
+The main class of the application responsible for creating the graphical user interface (GUI) and handling user interactions, as well as weather data retrieval and display.
 
 ### 2. WeatherAPI
 A class for interfacing with the WeatherAPI to fetch weather data using an API key.
@@ -61,4 +61,4 @@ A class representing an API key used for accessing weather data.
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
