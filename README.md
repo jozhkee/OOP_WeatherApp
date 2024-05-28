@@ -29,10 +29,10 @@ An exception class for handling custom exceptions in the application.
 ### 4. ExceptionHandler
 A class for handling exceptions and providing appropriate error messages to the user.
 
-### 5. InputHandler
+### 5. InputHandler (deprecated)
 A class for handling user input and displaying options for weather information retrieval.
 
-### 6. Util
+### 6. Util (deprecated)
 A utility class containing methods for checking if a string contains digits.
 
 ### 7. WeatherData
