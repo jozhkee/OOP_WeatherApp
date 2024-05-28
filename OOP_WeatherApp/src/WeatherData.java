@@ -200,7 +200,6 @@ class Location {
         this.localtime = localtime;
     }
 
-    // TODO: make this more appealing
     @Override
     public String toString() {
         return "name=" + name + ", region=" + region + ", country=" + country + ", latitude=" + lat + ", longitude="
